@@ -1,6 +1,3 @@
-// disabilitare le notifiche
-// HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\NotificationsAllowedForUrls
-
 function formatToYYYYMMDD_HH24MM(date) {
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
@@ -13,7 +10,7 @@ function formatToYYYYMMDD_HH24MM(date) {
 }
 
 setInterval( () =>  {
-  const searchText = 'XXXXXXX';
+    const searchText = 'XXXXXX';
 	const allImages = document.querySelectorAll('img'); // Get all <img> tags
 	const matchingImages = [];
 
@@ -29,12 +26,12 @@ setInterval( () =>  {
 				if (nextSibling.tagName === 'DIV' && nextSibling.getAttribute('role') === 'img') {
 					let now = formatToYYYYMMDD_HH24MM(new Date);
 					let status = nextSibling.getAttribute('aria-label');
-					console.log(`${now} ${status}`);
+					console.log(`${now} [STATUS] ${status} ${src}`);
 					break; // Stop after finding the first one
 				}
 				nextSibling = nextSibling.nextElementSibling; // Move to the next sibling
 			}
 		}
 	});
-}, 20000);
+}, 60000);
 
